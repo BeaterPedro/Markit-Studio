@@ -47,13 +47,13 @@
   .btn.primary{background:var(--grad);border:none;color:#0a0a0f;box-shadow:0 8px 26px rgba(139,92,246,.4)}
   .btn.primary:hover{box-shadow:0 10px 32px rgba(139,92,246,.55)}
 
-  main{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) 410px;gap:24px;padding:0 clamp(16px,4vw,40px) 48px;align-items:start}
+  main{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) 410px;gap:24px;padding:0 clamp(16px,4vw,40px) 48px;align-items:start;max-width:1440px;margin:0 auto}
   @media(max-width:980px){main{grid-template-columns:1fr}}
 
-  .stage{position:sticky;top:18px;background:var(--panel);border:1px solid var(--stroke);border-radius:var(--radius);padding:22px;backdrop-filter:blur(20px);display:flex;flex-direction:column;align-items:center;gap:16px;min-height:60vh}
+  .stage{position:sticky;top:18px;background:var(--panel);border:1px solid var(--stroke);border-radius:var(--radius);padding:22px;backdrop-filter:blur(20px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;min-height:60vh}
   @media(max-width:980px){.stage{position:relative;top:0}}
-  .canvas-wrap{position:relative;max-height:68vh;display:flex;align-items:center;justify-content:center;border-radius:14px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.5)}
-  #stageCanvas{max-height:68vh;max-width:100%;height:auto;display:block;cursor:grab;touch-action:none;border-radius:14px}
+  .canvas-wrap{position:relative;width:100%;display:flex;align-items:center;justify-content:center}
+  #stageCanvas{display:block;width:auto;height:auto;max-width:min(100%,400px);max-height:72vh;cursor:grab;touch-action:none;border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.5)}
   #stageCanvas:active{cursor:grabbing}
   .hint{font-size:12px;color:var(--muted);text-align:center}
   .stage-foot{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;width:100%}
@@ -434,7 +434,7 @@ function drawBlock(c){
 
 function drawCheckerboard(c,w,h){
   const s=Math.round(w/26);
-  for(let y=0;y<h;y+=s) for(let x=0;x<w;x+=s){ c.fillStyle=((x/s+y/s)&1)?'#1b1b25':'#262633'; c.fillRect(x,y,s,s); }
+  for(let y=0;y<h;y+=s) for(let x=0;x<w;x+=s){ c.fillStyle=((x/s+y/s)&1)?'#262633':'#363650'; c.fillRect(x,y,s,s); }
 }
 
 function render(forExport=false){
